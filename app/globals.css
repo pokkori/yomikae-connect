@@ -1,0 +1,22 @@
+@import "tailwindcss";
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #0a0f1a;
+  color: #e8e0d0;
+  font-family: 'system-ui', sans-serif;
+  min-height: 100dvh;
+}
+@keyframes bounce-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes wrong-shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+.bounce-in { animation: bounce-in 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards; }
+.wrong-shake { animation: wrong-shake 0.35s ease-in-out; }
