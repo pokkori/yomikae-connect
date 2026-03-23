@@ -156,11 +156,14 @@ https://yomikae-connect.vercel.app`;
               return (
                 <button key={`${word.word}-${idx}`}
                   onClick={() => toggleSelect(originalIdx)}
+                  aria-label={`${word.word}（${word.reading}）を${isSel ? "選択解除" : "選択"}する`}
+                  aria-pressed={isSel}
                   className="rounded-xl py-3 text-center font-black transition-all active:scale-95"
                   style={{
                     background: isSel ? "rgba(245,158,11,0.3)" : "rgba(255,255,255,0.06)",
                     border: isSel ? "2px solid #f59e0b" : "1px solid rgba(255,255,255,0.1)",
                     fontSize: "1.25rem",
+                    minHeight: "44px",
                   }}>
                   {word.word}
                   <div className="text-xs opacity-50 font-normal">{word.reading}</div>
@@ -171,7 +174,8 @@ https://yomikae-connect.vercel.app`;
           <button
             onClick={submitGuess}
             disabled={selected.size !== 4}
-            className="w-full py-3 rounded-xl font-black text-base transition-all active:scale-95"
+            aria-label={selected.size === 4 ? "4つの漢字グループを決定する" : `あと${4 - selected.size}つ漢字を選択してください`}
+            className="w-full py-3 rounded-xl font-black text-base transition-all active:scale-95 min-h-[44px]"
             style={selected.size === 4
               ? { background: "linear-gradient(135deg,#f59e0b,#d97706)", color: "#0a0f1a" }
               : { background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.3)", cursor: "not-allowed" }}>
