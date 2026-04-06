@@ -106,8 +106,8 @@ https://yomikae-connect.vercel.app`;
       style={{ background: "linear-gradient(160deg, #0a0f1a, #0f1a2e)" }}>
       <div className="flex items-center justify-between mb-2">
         <a href="/" className="text-amber-600 text-sm">← トップ</a>
-        <h1 className="font-black text-base" style={{ color: "#f59e0b" }}>📖 読み替えコネクト</h1>
-        <div className="text-xs text-amber-600">{streak > 0 ? `🔥${streak}日` : `#${puzzle.id}`}</div>
+        <h1 className="font-black text-base" style={{ color: "#f59e0b" }}>読み替えコネクト</h1>
+        <div className="text-xs text-amber-600">{streak > 0 ? `${streak}日連続` : `#${puzzle.id}`}</div>
       </div>
       <div className="text-center mb-2">
         <span className="text-xs px-3 py-1 rounded-full"
@@ -198,7 +198,21 @@ https://yomikae-connect.vercel.app`;
       {gameOver && (
         <div className="mt-4 rounded-2xl p-5 text-center bounce-in"
           style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.25)" }}>
-          <div className="text-4xl mb-2">{won ? "🎉" : "😢"}</div>
+          <div className="text-4xl mb-2">
+            {won ? (
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" style={{margin:"0 auto"}}>
+                <circle cx="20" cy="20" r="18" fill="#f59e0b" opacity="0.15"/>
+                <path d="M12 20l6 6 10-12" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" style={{margin:"0 auto"}}>
+                <circle cx="20" cy="20" r="18" fill="#6b7280" opacity="0.15"/>
+                <path d="M14 26c2-3 10-3 12 0" stroke="#6b7280" strokeWidth="2.5" strokeLinecap="round"/>
+                <circle cx="15" cy="17" r="2" fill="#6b7280"/>
+                <circle cx="25" cy="17" r="2" fill="#6b7280"/>
+              </svg>
+            )}
+          </div>
           <div className="text-xl font-black mb-1" style={{ color: "#f59e0b" }}>
             {won ? "全問正解！" : "残念..."}
           </div>
